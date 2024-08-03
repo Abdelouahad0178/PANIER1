@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "name": "CORE_DECOR_WARM_60X60",
+        "price": 300,
+        "imageUrl": "./images/CORE_DECOR_WARM_60X60.jpg"
+    },
+    {
+        "id": 2,
+        "name": "CR.NEBULA_ALMOND_120X280",
+        "price": 700,
+        "imageUrl": "./images/CR.NEBULA_ALMOND_120X280.jpg"
+    },
+    {
+        "id": 3,
+        "name": "cosmo-sand-120x120",
+        "price": 400,
+        "imageUrl": "./images/cosmo-sand-120x120cm.jpg"
+    },
+
+
+
+    {
+        "id": 4,
+        "name": "CORE_DECOR_WARM_60X60",
+        "price": 300,
+        "imageUrl": "./images/CORE_DECOR_WARM_60X60.jpg"
+    },
+    {
+        "id": 5,
+        "name": "CR.NEBULA_ALMOND_120X280",
+        "price": 700,
+        "imageUrl": "./images/CR.NEBULA_ALMOND_120X280.jpg"
+    },
+    {
+        "id": 6,
+        "name": "cosmo-sand-120x120",
+        "price": 400,
+        "imageUrl": "./images/cosmo-sand-120x120cm.jpg"
+    }
+
+,
+{
+    "id": 7,
+    "name": "CORE_DECOR_WARM_60X60",
+    "price": 300,
+    "imageUrl": "./images/CORE_DECOR_WARM_60X60.jpg"
+},
+{
+    "id": 8,
+    "name": "CR.NEBULA_ALMOND_120X280",
+    "price": 700,
+    "imageUrl": "./images/CR.NEBULA_ALMOND_120X280.jpg"
+},
+{
+    "id": 9,
+    "name": "cosmo-sand-120x120",
+    "price": 400,
+    "imageUrl": "./images/cosmo-sand-120x120cm.jpg"
+}
+
+
+
+
+
+
+]

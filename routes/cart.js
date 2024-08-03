@@ -1,55 +1,56 @@
 const express = require('express');
 const router = express.Router();
-const CartItem = require('../models/cart');
+const Cart = require('../models/cart');
+const Product = require('../models/product');
 
-// Ajouter un article au panier
+// Route pour ajouter un article au panier
 router.post('/', async (req, res) => {
     const { product, quantity } = req.body;
+    const cartItem = new Cart({ product, quantity });
     try {
-        const cartItem = new CartItem({ product, quantity });
         await cartItem.save();
         res.status(201).send(cartItem);
     } catch (error) {
-        res.status(400).send({ message: 'Error adding item to cart', error });
+        res.status(400).send(error);
     }
 });
 
-// Obtenir tous les articles du panier
+// Route pour obtenir tous les articles du panier
 router.get('/', async (req, res) => {
     try {
-        const cartItems = await CartItem.find().populate('product');
-        res.send(cartItems);
+        const cartItems = await Cart.find().populate('product');
+        res.status(200).send(cartItems);
     } catch (error) {
-        res.status(500).send({ message: 'Error fetching cart items', error });
+        res.status(500).send(error);
     }
 });
 
-// Mettre à jour la quantité d'un article du panier
+// Route pour mettre à jour la quantité d'un article du panier
 router.patch('/:id', async (req, res) => {
+    const { id } = req.params;
     const { quantity } = req.body;
     try {
-        const cartItem = await CartItem.findById(req.params.id);
+        const cartItem = await Cart.findByIdAndUpdate(id, { quantity }, { new: true, runValidators: true });
         if (!cartItem) {
-            return res.status(404).send({ message: 'Cart item not found' });
+            return res.status(404).send();
         }
-        cartItem.quantity = quantity;
-        await cartItem.save();
-        res.send(cartItem);
+        res.status(200).send(cartItem);
     } catch (error) {
-        res.status(400).send({ message: 'Error updating cart item', error });
+        res.status(400).send(error);
     }
 });
 
-// Supprimer un article du panier
+// Route pour supprimer un article du panier
 router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const cartItem = await CartItem.findByIdAndDelete(req.params.id);
+        const cartItem = await Cart.findByIdAndDelete(id);
         if (!cartItem) {
-            return res.status(404).send({ message: 'Cart item not found' });
+            return res.status(404).send();
         }
-        res.send(cartItem);
+        res.status(200).send(cartItem);
     } catch (error) {
-        res.status(500).send({ message: 'Error deleting cart item', error });
+        res.status(500).send(error);
     }
 });
 
